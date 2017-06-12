@@ -128,13 +128,17 @@ export default class DB {
         [title, description, id_added_by, id_category, id_known_error])
     }
 
+    /*
+    Funktion für die Suchabfrage. Sucht durch alle erfassten Knwon Error Title, Worklog Title und Worklog Description.
+     */
     searchErrorsandWorklogs(searchFieldText){
         pool.on('error', function (e, client){
             console.log(e)
         })
 
         /*
-        SQL Query für die Suchabfrage. Übernimmt Text aus Suchfeld und gleicht diese mit Titel von Known Errors / Worklogs und den Descriptions aus Worklogs ab
+        SQL Query für die Suchabfrage. Übernimmt Text aus Suchfeld und gleicht diese mit Titel von Known Errors / Worklogs und den Descriptions aus Worklogs ab.
+        ILIKE Abfrage mit % vor und nach Suchterm, ignoriert Gross-/Kleinschreibung.
          */
         pool.query('SELECT ke.id, ke.title, stat.status, addby.name, cat.category FROM KnownErrors ke JOIN Status stat ON (ke.id_status = stat.id) JOIN Added_by addby ON (ke.id_added_by = addby.id) JOIN Category cat ON (ke.id_category = cat.id) JOIN Worklogs wl ON (wl.id_known_error = ke.id) WHERE ke.title || wl.title || wl.description ILIKE %' + searchFieldText + '%;', function (err, result) {
             response.json(result.rows);
