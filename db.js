@@ -116,16 +116,17 @@ export default class DB {
     /*
     Funktion um einen neuen Worklog bei einem spezifischen Known Error hinzuzufügen
      */
-    addWorklogs(title, description, id_added_by, id_category, id_known_error){
+    addWorklogs(title, description, id_added_by, id_known_error){
         pool.on('error', function (e, client) {
-            console.log(e)
+            console.log("ERROR"+e)
         })
 
         /*
         SQL Query für INSERT eines Worklogs. Die angegeben Variablen werden auch hier dem Query als Parameter übergeben
          */
-        pool.query('INSERT into Worklogs(title, description, id_added_by, id_category, id_known_error) VALUES ($1, $2, $3, $4, $5);',
-        [title, description, id_added_by, id_category, id_known_error])
+        pool.query('INSERT into Worklogs(title, description, id_added_by, id_known_error) VALUES ($1, $2, $3, $4);',
+        [title, description, id_added_by, id_known_error]
+        )
     }
 
     /*

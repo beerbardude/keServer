@@ -32,8 +32,8 @@ router.use(function(req, res, next){
 router.route('/')
 
     .get(function (req, res){
-    data.getErrors(res)
-})
+        data.getErrors(res)
+    })
 
 /*
 Ansicht für einen spezifischen Known Error. Ruft die "getWorklogs" Funktion aus der db.js auf und erhält alle erfassten Worklogs eines Known errors. Rückgabewert im JSON Format
@@ -45,8 +45,8 @@ router.route('/ke/:id')
         //let test_id = req.param('ke_id')
         let test_id = req.params.id
         console.log('*****TEST_ID*******' + test_id)
-    //console.log('*****ID****' + reg.params.id)
-    data.getWorklogs(test_id, res)
+        //res.json({"id": 1})
+        data.getWorklogs(test_id, res)
 })
 
 /*
@@ -90,8 +90,12 @@ router.route('/add')
     let category = payload.category
     console.log('add cat', category)
 
-    data.addErrors(title, status, name, category)
-    res.sendStatus(200)
+        if(title === ''){
+            throw new Error('Title may not be empty!')
+        }else {
+            data.addErrors(title, status, name, category)
+            res.sendStatus(200)
+        }
 })
 
 /*
@@ -104,14 +108,25 @@ router.route('/add_wl')
     let title = payload.title
     let description = payload.description
     let name = payload.name
-    let category = payload.category
-    let id_known_error = payload.id_known_error
+    let id_known_error = payload.id_test
+        console.log("id known " + payload.id_test)
+        console.log("name:" + payload.name)
 
-    data.addWorklogs(title, description, name, category, id_known_error)
-    res.sendStatus(200)
+        console.log(payload)
+        if(title === ''){
+            throw new Error('Worklog Title may not be emtpy')
+        }else {
+            data.addWorklogs(title, description, name, id_known_error)
+            res.sendStatus(200)
+        }
 })
 
 app.use('/', router)
+
+app.use(function(err, req, res, next){
+    delete err.stack
+    res.status(err.status || 500).json(err)
+})
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
