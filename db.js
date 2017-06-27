@@ -1,21 +1,11 @@
-/**
+/** data base operations
  * Created by Armin on 10.06.2017.
  */
 'use strict'
-let Pool = require('pg').Pool
-
 /*Initialisierung der DB Verbindung mittels pg library.
-Definition als Pool für Verbindung von mehreren Clients gleichzeitig.
+ Definition als Pool für Verbindung von mehreren Clients gleichzeitig.
  */
-
-let pool = new Pool({
-    user: 'postgres',
-    password: 'postgres',
-    host: 'localhost',
-    database: 'KnownErrors',
-    max: 100,
-    idleTimeoutMillis: 2000,
-})
+let pool = require('./config')
 
 export default class DB {
     /*
