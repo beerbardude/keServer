@@ -25,7 +25,6 @@ Startseite. Ruft die Funktion "getErrors" aus der DB aus und erhält alle erfass
  */
 
 router.use(function(req, res, next){
-    console.log('Log for console output hahaha')
     next()
 })
 
@@ -120,6 +119,18 @@ router.route('/add_wl')
             res.sendStatus(200)
         }
 })
+
+
+/**
+ * liefert die suchergebnisse aus known errors und worklogs
+ */
+router.route('/search/:text')
+
+    .get(function(req, res){
+        let test_id = req.params.text
+        data.searchErrorsAndWorklogs(test_id, res)
+    })
+
 
 app.use('/', router)
 

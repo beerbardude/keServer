@@ -120,7 +120,7 @@ export default class DB {
     /*
     Funktion für die Suchabfrage. Sucht durch alle erfassten Knwon Error Title, Worklog Title und Worklog Description.
      */
-    searchErrorsandWorklogs(searchFieldText){
+    searchErrorsAndWorklogs(text, response){
         pool.on('error', function (e, client){
             console.log(e)
         })
@@ -129,8 +129,10 @@ export default class DB {
         SQL Query für die Suchabfrage. Übernimmt Text aus Suchfeld und gleicht diese mit Titel von Known Errors / Worklogs und den Descriptions aus Worklogs ab.
         ILIKE Abfrage mit % vor und nach Suchterm, ignoriert Gross-/Kleinschreibung.
          */
-        pool.query('SELECT ke.id, ke.title, stat.status, addby.name, cat.category FROM KnownErrors ke JOIN Status stat ON (ke.id_status = stat.id) JOIN Added_by addby ON (ke.id_added_by = addby.id) JOIN Category cat ON (ke.id_category = cat.id) JOIN Worklogs wl ON (wl.id_known_error = ke.id) WHERE ke.title || wl.title || wl.description ILIKE %' + searchFieldText + '%;', function (err, result) {
-            response.json(result.rows);
+        pool.query('SELECT ke.id as keId, ke.title, stat.status, stat.id as statId, addby.name, addby.id as addbyId, cat.category, cat.id as catId FROM KnownErrors ke JOIN Status stat ON (ke.id_status = stat.id) JOIN Added_by addby ON (ke.id_added_by = addby.id) JOIN Category cat ON (ke.id_category = cat.id) JOIN Worklogs wl ON (wl.id_known_error = ke.id) WHERE ke.title || wl.title || wl.description ILIKE '
+            + '\'%' + text + '%\';',
+            function (err, result) {
+                response.json(result.rows);
         } )
     }
 
