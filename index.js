@@ -107,10 +107,7 @@ router.route('/add_wl')
     let title = payload.title
     let description = payload.description
     let name = payload.name
-    let id_known_error = payload.id_test
-        console.log("id known " + payload.id_test)
-        console.log("name:" + payload.name)
-
+    let id_known_error = payload.id_known_error
         console.log(payload)
         if(title === ''){
             throw new Error('Worklog Title may not be emtpy')
@@ -127,8 +124,8 @@ router.route('/add_wl')
 router.route('/search/:text')
 
     .get(function(req, res){
-        let test_id = req.params.text
-        data.searchErrorsAndWorklogs(test_id, res)
+        let id = req.params.text
+        data.searchErrorsAndWorklogs(id, res)
     })
 
 
