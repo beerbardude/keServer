@@ -41,10 +41,7 @@ Ansicht für einen spezifischen Known Error. Ruft die "getWorklogs" Funktion aus
 router.route('/ke/:id')
 
     .get(function(req, res){
-        //let test_id = req.param('ke_id')
         let test_id = req.params.id
-        console.log('*****TEST_ID*******' + test_id)
-        //res.json({"id": 1})
         data.getWorklogs(test_id, res)
 })
 
@@ -79,15 +76,10 @@ Fügt einen neuen Error zur Datenbank hinzu.
 router.route('/add')
     .post(function(req, res){
     let payload = req.body
-    console.log('payload',payload)
     let title = payload.title
-    console.log('add title', title)
     let status = payload.status
-    console.log('add status', status)
     let name = payload.name
-    console.log('add name', name)
     let category = payload.category
-    console.log('add cat', category)
 
         if(title === ''){
             throw new Error('Title may not be empty!')
@@ -108,11 +100,11 @@ router.route('/add_wl')
     let description = payload.description
     let name = payload.name
     let id_known_error = payload.id_known_error
-        console.log(payload)
+    let link = payload.link
         if(title === ''){
             throw new Error('Worklog Title may not be emtpy')
         }else {
-            data.addWorklogs(title, description, name, id_known_error)
+            data.addWorklogs(title, description, name, id_known_error, link)
             res.sendStatus(200)
         }
 })

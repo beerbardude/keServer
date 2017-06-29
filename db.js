@@ -38,7 +38,7 @@ export default class DB {
         /*
         SQL Abfrage um alle Worklog Einträge für einen Known Error auszulesen. Für die WHERE Bedingung wird die Known Error ID verwendet
          */
-       pool.query('SELECT wl.id, wl.title, wl.description, addby.name FROM Worklogs wl JOIN Added_by addby ON (wl.id_added_by = addby.id) WHERE id_known_error = ' + id+';', function (err, result) {
+       pool.query('SELECT wl.id, wl.title, wl.description, addby.name, wl.kb_link FROM Worklogs wl JOIN Added_by addby ON (wl.id_added_by = addby.id) WHERE id_known_error = ' + id+';', function (err, result) {
             response.json(result.rows);
         } )
 
@@ -104,7 +104,7 @@ export default class DB {
     /*
     Funktion um einen neuen Worklog bei einem spezifischen Known Error hinzuzufügen
      */
-    addWorklogs(title, description, id_added_by, id_known_error){
+    addWorklogs(title, description, id_added_by, id_known_error, link){
         pool.on('error', function (e, client) {
             console.log("ERROR"+e)
         })
@@ -112,8 +112,8 @@ export default class DB {
         /*
         SQL Query für INSERT eines Worklogs. Die angegeben Variablen werden auch hier dem Query als Parameter übergeben
          */
-        pool.query('INSERT into Worklogs(title, description, id_added_by, id_known_error) VALUES ($1, $2, $3, $4);',
-        [title, description, id_added_by, id_known_error]
+        pool.query('INSERT into Worklogs(title, description, id_added_by, id_known_error, kb_link) VALUES ($1, $2, $3, $4, $5);',
+        [title, description, id_added_by, id_known_error, link]
         )
     }
 
