@@ -5,7 +5,7 @@ id SERIAL PRIMARY KEY,
 title VARCHAR(200) NOT NULL UNIQUE,
 id_status int NOT NULL,
 id_added_by int NOT NULL,
-kb_link varchar,
+created_at date NOT NULL DEFAULT CURRENT_DATE,
 id_category int NOT NULL
 );
 
