@@ -61,7 +61,7 @@ export default class DB {
     /*
     Funktion um alle erfassten Kategorien aus der DB zu laden
      */
-    getCategories (response ){
+    getCategories (response){
         pool.on('error', function (e, client){
             console.log(e)
         })
@@ -136,4 +136,18 @@ export default class DB {
         } )
     }
 
+
+    /*
+    Funktion um den status einen known errors upzudaten
+     */
+    updateKnownError(id_known_error, status) {
+        pool.on('error', function (e, client){
+            console.log(e)
+        })
+
+        /*
+         SQL Query für update known error
+         */
+        pool.query('update knownerrors SET id_status = $1 where id = $2;', [id_known_error, status])
+    }
 }

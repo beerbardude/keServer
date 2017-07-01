@@ -101,9 +101,11 @@ router.route('/add_wl')
     let name = payload.name
     let id_known_error = payload.id_known_error
     let link = payload.link
+    let status = payload.status
         if(title === ''){
             throw new Error('Worklog Title may not be emtpy')
         }else {
+            data.updateKnownError(id_known_error, status)
             data.addWorklogs(title, description, name, id_known_error, link)
             res.sendStatus(200)
         }
