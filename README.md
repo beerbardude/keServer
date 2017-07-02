@@ -19,6 +19,8 @@ Das dazugehörige Projekt für die Client Seite ist unter folgendem Link zu find
 Als Grundlage für den Server wird Node.js mit der Express Library verwendet.
 Als zusätzliche Library auf der Server Seite wird pg verwendet. Die pg Library ermöglich die Anbindung an die PostgreSQL Datebank.
 
+[Node.js](https://nodejs.org/en/)
+
 [Express](http://expressjs.com)
 
 [pg](https://www.npmjs.com/package/pg)
