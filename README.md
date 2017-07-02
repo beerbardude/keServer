@@ -35,4 +35,8 @@ Der PostgreSQL Server muss erreichbar sein. Für die Verbindung wird der Standar
 Folgende Schritte müssen auf dem PostgreSQL Server durchgeführt werden:
 
 1. Erstellung einer Datenbank, DB Name: KnownErrors
-2. Ausführung des Scripts 
+2. Ausführung des Scripts Create.sql (Bestandteil des Projekts, abgelegt im Ordner SQL) [Link Create.sql](SQL/Create.sql)
+3. Nach Ausführung der Create.sql sind alle benötigen Tables angelegt. Als letztes können nun Testdaten erfasst werden.
+Dazu kann das Script insert.sql (Bestandteil des Projekts, abgelegt im Ordner SQL) ausgeführt werden. Dieses Script fügt Known Errors und Worklogs zu der Datenbank hinzu. [Link Insert.sql](SQL/Insert.sql)
+
+
