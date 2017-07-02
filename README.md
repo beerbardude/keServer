@@ -86,6 +86,12 @@ http://localhost:3000
 
 Als Resultat sollte man im Browser ein die erfassten Fehler in der Datenbank sehen. Das Resultat wird im JSON Format dargestellt.
 
+## To Do
+
+- Encoding / Escaping
+- Verbesserung des Exception Handlings
+- Generierung von Log Files
+
 ## Autoren
 - Alex Zaeper
 - Armin Beiner
