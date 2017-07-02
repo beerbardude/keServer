@@ -14,3 +14,25 @@ Das dazugehörige Projekt für die Client Seite ist unter folgendem Link zu find
 
 [Projekt keClient](https://github.com/ibwgr/keClient)
 
+## Entwicklung
+
+Als Grundlage für den Server wird die Express Library verwendet.
+Als zusätzliche Library auf der Server Seite wird pg verwendet. Die pg Library ermöglich die Anbindung an die PostgreSQL Datebank.
+
+[Express](http://expressjs.com)
+
+[pg](https://www.npmjs.com/package/pg)
+
+## Vorbereitung und Installation
+
+Folgende Schritte müssen zur Vorbereitung und Installation durchgeführt werden.
+
+### Erstellung der benötigten Datenbank
+
+Um Daten zu erfassen und zu speichern wird eine PostgreSQL Datebank benötigt.
+Der PostgreSQL Server muss erreichbar sein. Für die Verbindung wird der Standardport 5432 verwendet. Bei Bedarf kann das in der Konfiguration angepasst werden (NICHT GETESTET)
+
+Folgende Schritte müssen auf dem PostgreSQL Server durchgeführt werden:
+
+1. Erstellung einer Datenbank, DB Name: KnownErrors
+2. Ausführung des Scripts 
