@@ -59,10 +59,3 @@ INSERT INTO Status (status) VALUES ('Open');
 INSERT INTO Status (status) VALUES ('Pending');
 INSERT INTO Status (status) VALUES ('Waiting for Release');
 INSERT INTO Status (status) VALUES ('Resolved');
-
-INSERT INTO KnownErrors (title, id_status, id_added_by, id_category) VALUES ('Static Hosts Entries werden nicht korrekt gelöscht', 2, 1, 2);
-INSERT INTO KnownErrors (title, id_status, id_added_by, id_category) VALUES ('MobileID PIN Aufforderung erscheint nicht bei Android 6.2', 1, 2, 1);
-INSERT INTO KnownErrors (title, id_status, id_added_by, id_category) VALUES ('Verbindung zu test.hallo.com über Mobiles Netzwerk funktioniert nicht', 2, 3, 3);
-
-INSERT INTO Worklogs (title, description, id_added_by, id_known_error) VALUES ('Eintrag verschwindet aus GUI, /etc/hosts File wird aber nicht angepasst', 'Wenn Eintrag für Static host aus GUI gelöscht wird, verschwindet der erfasste Static Host Eintrag aus dem GUI, das /etc/hosts File wird aber nicht angepasst. Namensauflösung wird weiterhin auf alten Eintrag aufgelöst. Ticket bei Hersteller eröffnet', 1, 2);
-INSERT INTO Worklogs (title, description, id_added_by, id_known_error) VALUES ('Tastatur zur PIN Aufforderung erscheint nicht', 'Requests auf MobileID Backend sind alle in Ordnung, Eingabeaufforderung erscheint aber nicht', 2, 2);
