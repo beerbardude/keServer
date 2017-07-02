@@ -47,7 +47,7 @@ Dazu kann das Script insert.sql (Bestandteil des Projekts, abgelegt im Ordner SQ
 Auf dem System muss Node.js installiert sein, um das Projekt korrekt zu starten.
 Die zusätzlich benötigten Libraries sind Bestandteil des node_modules Folder, weshalb keine zusätzlichen Pakete installiert werden müssen.
 
-Sollten dabei Probleme auftreten, können die Pakete ebenfalls manuell installiert werden:
+Sollten dabei Probleme auftreten, können die Pakete manuell installiert werden:
 ```
 npm install express
 
