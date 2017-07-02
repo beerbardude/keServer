@@ -56,6 +56,19 @@ npm install cors
 npm install body-parser
 ```
 
+### Anpassung der Datenbank Verbindung (optional)
+
+Die Daten für den Verbindungsaufbau zur Datenbank sind im File **config.js** definiert. Die Default Einstellung verwenden die folgenden Parameter:
+
+- user: 'postgres'
+- password: 'postgres'
+- host: 'localhost'
+- port: 5432
+- database: 'KnownErrors'
+
+Wenn der PostgreSQL Server nicht auf dem localhost ausgeführt wird, ein anderer Benutzer, ein anderes Passwort oder ein alternativer Port verwendet wird, können diese Angaben hier angepasst werden.
+Falls ebenfalls ein alternativer Name für die Datenbank verwendet wird, muss das ebenfalls hier angepasst werden.
+
 ## Starten des Servers
 
 Sind die Vorbereitungen und Installationen abgeschlossen, kann der Server gestartet werden.
