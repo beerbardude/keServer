@@ -69,7 +69,7 @@ Die Daten für den Verbindungsaufbau zur Datenbank sind im File **config.js** de
 - database: 'KnownErrors'
 
 Wenn der PostgreSQL Server nicht auf dem localhost ausgeführt wird, ein anderer Benutzer, ein anderes Passwort oder ein alternativer Port verwendet wird, können diese Angaben hier angepasst werden.
-Falls ebenfalls ein alternativer Name für die Datenbank verwendet wird, muss das ebenfalls hier angepasst werden.
+Falls ein alternativer Name für die Datenbank verwendet wird, muss das ebenfalls hier angepasst werden.
 
 ## Starten des Servers
 
