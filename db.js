@@ -12,12 +12,7 @@ export default class DB {
     Funktion für das Laden aller Fehler aus der Datenbank für die Initiale Ansicht aller erfassten Fehler
      */
     getErrors(response){
-
-          pool.on('error', function (e, client) {
-            console.log(e)
-        });
-
-        /*
+/*
         SQL Query für die Abfrage der erfassten Fehler
          */
         pool.query("SELECT ke.id as keId, ke.title, stat.status, stat.id as statId, addby.name, addby.id as addbyId, cat.category , cat.id as catId, to_char( ke.created_at, 'DD. Mon YYYY') as createdAt FROM KnownErrors ke JOIN Status stat ON (ke.id_status = stat.id) JOIN Added_by addby ON (ke.id_added_by = addby.id) JOIN Category cat ON (ke.id_category = cat.id)", function (err, result) {
@@ -30,11 +25,6 @@ export default class DB {
     Als Parameter wird die Known Error ID übergeben
      */
     getWorklogs(id, response){
-
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         /*
         SQL Abfrage um alle Worklog Einträge für einen Known Error auszulesen. Für die WHERE Bedingung wird die Known Error ID verwendet
          */
@@ -48,10 +38,6 @@ export default class DB {
     Funktion um alle definierten Status aus der DB zu laden
      */
     getStatus (response){
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         pool.query('SELECT * from Status;', function (err, result) {
             response.json(result.rows);
         })
@@ -62,10 +48,6 @@ export default class DB {
     Funktion um alle erfassten Kategorien aus der DB zu laden
      */
     getCategories (response){
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         pool.query('SELECT * from Category;', function (err, result) {
             response.json(result.rows);
         })
@@ -75,10 +57,6 @@ export default class DB {
     Funktion um die Namen der Mitarbeiter aus der DB zu laden
      */
     getNames (response) {
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         pool.query('SELECT * from Added_by;', function (err, result) {
             response.json(result.rows);
         })
@@ -88,11 +66,6 @@ export default class DB {
     Funktion um einen neuen Error hinzuzufügen.
      */
     addErrors(title, id_status, id_added_by, id_category){
-
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         /*
         SQL Query für INSERT. Die angegeben Variablen werden dem Query als Parameter übergeben
          */
@@ -105,10 +78,6 @@ export default class DB {
     Funktion um einen neuen Worklog bei einem spezifischen Known Error hinzuzufügen
      */
     addWorklogs(title, description, id_added_by, id_known_error, link){
-        pool.on('error', function (e, client) {
-            console.log("ERROR"+e)
-        })
-
         /*
         SQL Query für INSERT eines Worklogs. Die angegeben Variablen werden auch hier dem Query als Parameter übergeben
          */
@@ -121,10 +90,6 @@ export default class DB {
     Funktion für die Suchabfrage. Sucht durch alle erfassten Knwon Error Title, Worklog Title und Worklog Description.
      */
     searchErrorsAndWorklogs(text, response){
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         /*
         SQL Query für die Suchabfrage. Übernimmt Text aus Suchfeld und gleicht diese mit Titel von Known Errors / Worklogs und den Descriptions aus Worklogs ab.
         ILIKE Abfrage mit % vor und nach Suchterm, ignoriert Gross-/Kleinschreibung.
@@ -141,13 +106,9 @@ export default class DB {
     Funktion um den status einen known errors upzudaten
      */
     updateKnownError(id_known_error, status) {
-        pool.on('error', function (e, client){
-            console.log(e)
-        })
-
         /*
          SQL Query für update known error
          */
-        pool.query('update knownerrors SET id_status = $1 where id = $2;', [id_known_error, status])
+        pool.query('update knownerrors SET id_status = $1 where id = $2;', [status, id_known_error])
     }
 }
