@@ -86,6 +86,15 @@ http://localhost:3000
 
 Als Resultat sollte man im Browser ein die erfassten Fehler in der Datenbank sehen. Das Resultat wird im JSON Format dargestellt.
 
+## Tests
+
+Es sind ausschliesslich Datenbanktests implementiert.
+Es wird getestet ob die Abfragen für die Select Felder die korrekten Ergebnisse liefern.
+Die Tests für die Suche sind für die Initialdatenbank angepasst.
+
+Starten der Tests: npm test
+
+
 ## To Do
 
 - Encoding / Escaping
