@@ -28,7 +28,7 @@ export default class DB {
         /*
         SQL Abfrage um alle Worklog Einträge für einen Known Error auszulesen. Für die WHERE Bedingung wird die Known Error ID verwendet
          */
-       pool.query('SELECT wl.id, wl.title, wl.description, addby.name, wl.kb_link FROM Worklogs wl JOIN Added_by addby ON (wl.id_added_by = addby.id) WHERE id_known_error = ' + id+';', function (err, result) {
+       pool.query('SELECT wl.id, wl.title, wl.description, addby.name, wl.kb_link FROM Worklogs wl JOIN Added_by addby ON (wl.id_added_by = addby.id) WHERE id_known_error = ' + id+' order by wl.id desc;', function (err, result) {
             response.json(result.rows);
         } )
 
