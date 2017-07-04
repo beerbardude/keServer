@@ -91,7 +91,20 @@ Es sind ausschliesslich Datenbanktests implementiert.
 Es wird getestet ob die Abfragen für die Select Felder die korrekten Ergebnisse liefern.
 Die Tests für die Suche sind für die Initialdatenbank angepasst.
 
-Starten der Tests: npm test
+Testframework: mocha
+
+Testmodul installieren
+
+    yarn add -D mocha
+    yarn add -D babel-register
+
+Startskript in package json:
+        
+    "test": "./node_modules/.bin/mocha --require babel-register test/db-tests.js" 
+
+Starten der Tests: 
+
+    npm test
 
 
 ## To Do
